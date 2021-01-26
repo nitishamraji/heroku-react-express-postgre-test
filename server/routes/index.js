@@ -20,12 +20,63 @@ router.post('/stocks', cors(), async (req, res, next) => {
   //     res.json(`${req.path} fetched ${JSON.stringify(data)} from the database`)
   //   })
   //   .catch(next)
-  console.log('testing api stocks:' + req);
-  var userJson = req.body;
+  // console.log('testing api stocks:' + req);
+  // var userJson = req.body;
+  //
+  // const user = await db.User.create({ userId: userJson.category, role: userJson.stocks[0] });
+  //
+  // console.log(user);
 
-  const user = await db.User.create({ userId: userJson.category, role: userJson.stocks[0] });
+  // try {
+  //   var stocksJson = req.body;
+  //   const stocksByCategory = await db.StocksByCategory.findOne()
+  //   const category = stocksJson.category;
+  //   const stocks = stocksJson.stocks;
+  //
+  //   if( !stocksByCategory )
+  //   {
+  //     console.log('no data');
+  //     const obj = {};
+  //     obj[stocksJson.category]=stocksJson.stocks;
+  //     const test = await db.StocksByCategory.create({doc: obj});
+  //   } else {
+  //     console.log('data exists');
+  //     console.log(stocksByCategory.doc);
+  //     stocksByCategory.doc[category] = stocks;
+  //     console.log(stocksByCategory.doc);
+  //     // await stocksByCategory.setDataValue('doc', stocksByCategory.doc);
+  //       // stocksByCategory.save({haveChangedJSON: ["doc"]});
+  //       stocksByCategory.changed('doc', true);
+  //       stocksByCategory.save();
+  //   }
+  // } catch(e)
+  // {
+  //   console.log(e);
+  // }
 
-  console.log(user);
+
+
+
+
+
+
+
+
+  try {
+    const supportedStocks = await db.SupportedStocks.findOne()
+
+    if( !supportedStocks )
+    {
+      console.log('no supportedStocks data');
+    } else {
+      console.log('data exists');
+      console.log(supportedStocks.data.length);
+    }
+  } catch(e)
+  {
+    console.log(e);
+  }
+
 
   // Stocks.create({ doc: {category: stockJson.category, stocks: stockJson.stocks} });
 

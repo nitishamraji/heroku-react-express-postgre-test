@@ -4,7 +4,10 @@ module.exports = {
   development: {
     dialect: "postgres",
     use_env_variable: "DATABASE_URL",
-    operatorsAliases: "Sequelize.Op"
+    operatorsAliases: "Sequelize.Op",
+    define: {
+      timestamps: true,
+    }
   },
   test: {
     dialect: "postgres",
