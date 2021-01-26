@@ -9,7 +9,7 @@
     "postinstall": "npm --prefix client install && npm --prefix server install",
     "start:dev": "concurrently 'npm run --prefix client start' 'nodemon server'",
     "heroku-postbuild": "cd client && npm install && npm run build",
-    "start": "NODE_ENV=development node server",
+    "start": "NODE_ENV=production node server",
     "db-migrate": "cd server && npx sequelize-cli db:migrate"
   },
   "dependencies": {
