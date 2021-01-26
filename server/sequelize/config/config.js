@@ -15,7 +15,7 @@ module.exports = {
     dialect: "postgres",
     use_env_variable: "DATABASE_URL",
     operatorsAliases: "Sequelize.Op",
-    ssl: true,
+    ssl: { rejectUnauthorized: false },
     dialectOptions: {
       "ssl": true
     }
