@@ -16,7 +16,7 @@ module.exports = {
     use_env_variable: "DATABASE_URL",
     operatorsAliases: "Sequelize.Op",
     dialectOptions: {
-      "ssl": true,
+      ssl: true,
       rejectUnauthorized: false
     }
   }
