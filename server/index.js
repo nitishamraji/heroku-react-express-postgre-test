@@ -3,6 +3,7 @@ const cowsay = require('cowsay')
 const cors = require('cors')
 var bodyParser = require('body-parser')
 require('dotenv').config()
+const path = require('path')
 
 // Create the server
 const app = express()
@@ -31,7 +32,7 @@ app.use(express.json());
 // }
 app.use(cors());
 
-const path = require('path')
+
 // // Serve static files from the React frontend app
 // app.use(express.static(path.join(__dirname, 'client/build')))
 // // Anything that doesn't match the above, send back index.html
