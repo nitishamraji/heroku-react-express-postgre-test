@@ -31,7 +31,7 @@ module.exports = {
     ssl: true,
     native: false,
     define: {
-      timestamps: false,
+      timestamps: true,
     }
   }
 };
