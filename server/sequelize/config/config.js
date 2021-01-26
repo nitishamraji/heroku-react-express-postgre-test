@@ -15,9 +15,22 @@ module.exports = {
     dialect: "postgres",
     use_env_variable: "DATABASE_URL",
     operatorsAliases: "Sequelize.Op",
+    pool: {
+        max: 20,
+        min: 1,
+        idle: 10,
+      },
     dialectOptions: {
-      ssl: true,
-      rejectUnauthorized: false
+      ssl: {
+        require: true,
+        // Ref.: https://github.com/brianc/node-postgres/issues/2009
+        rejectUnauthorized: false,
+      },
+      keepAlive: true,
+    },
+    ssl: true,
+    define: {
+      timestamps: false,
     }
   }
 };
