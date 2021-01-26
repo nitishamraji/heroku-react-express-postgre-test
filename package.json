@@ -2,17 +2,31 @@
   "name": "heroku-react-express-test-2",
   "version": "1.0.0",
   "description": "test",
-  "main": "index.js",
+  "main": "server/index.js",
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "cors": "^2.8.5",
-    "cowsay": "^1.4.0",
-    "express": "^4.17.1"
-  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js",
-    "heroku-postbuild": "cd client && npm install && npm run build"
-  }
+    "postinstall": "npm --prefix client install && npm --prefix server install",
+    "start:dev": "concurrently 'npm run --prefix client start' 'nodemon server'",
+    "heroku-postbuild": "npm run --prefix client build",
+    "start": "NODE_ENV=production node server",
+    "db-migrate": "cd server && npx sequelize-cli db:migrate"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "pg": "^8.5.1",
+    "pg-hstore": "^2.3.3",
+    "pg-promise": "^10.9.1",
+    "sequelize": "^6.4.0",
+    "sequelize-cli": "^6.2.0"
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0",
+    "nodemon": "^2.0.7"
+  },
+  "cacheDirectories": [
+    "node_modules",
+    "client/node_modules",
+    "server/node_modules"
+  ]
 }

@@ -3,7 +3,9 @@ import './App.css'
 class App extends Component {
   state = {
     cow: '',
-    text: ''
+    text: '',
+    category: '',
+    stock: ''
   }
 componentDidMount() {
     this.fetchCow()
@@ -26,8 +28,25 @@ handleChange = evt => {
     this.setState({ [evt.target.name]: evt.target.value })
     console.log(this.state.text)
   }
+
+testPostgrePost = async evt => {
+  evt.preventDefault()
+  const category = this.state.category
+  const stock = this.state.stock
+
+  const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ category: category, stocks: [stock] })
+    };
+    fetch(`/api/stocks`, requestOptions)
+        .then(response => response.json())
+        .then(data => console.log(data));
+}
+
 render() {
     return (
+      <div>
       <div className="App">
         <h3>Text Cow. Moo</h3>
         <code>{this.state.cow}</code>
@@ -41,6 +60,31 @@ render() {
           />
           <button type="submit">Show me a talking cow!</button>
         </form>
+      </div>
+
+      <div style={{marginTop: '10px'}}>
+      <form onSubmit={this.testPostgrePost}>
+        <label>Test Json postgre:</label>
+        <div>
+          <input
+            type="text"
+            name="category"
+            value={this.state.category}
+            onChange={this.handleChange}
+          />
+        </div>
+        <div>
+          <input
+            type="text"
+            name="stock"
+            value={this.state.stock}
+            onChange={this.handleChange}
+          />
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+      </div>
+
       </div>
     )
   }
