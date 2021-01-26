@@ -29,6 +29,7 @@ module.exports = {
       keepAlive: true,
     },
     ssl: true,
+    native: true,
     define: {
       timestamps: false,
     }
