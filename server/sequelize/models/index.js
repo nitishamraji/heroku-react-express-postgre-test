@@ -11,8 +11,6 @@ const config = require(__dirname + '/../config/config.js')[env];
 
 const db = {};
 
-console.log('.env file: ' + process.env.DATABASE_URL);
-console.log('config: ' + config.dialect);
 let sequelize = new Sequelize(process.env.DATABASE_URL, config);
 // if (config.use_env_variable) {
 //   sequelize = new Sequelize(process.env[config.use_env_variable], config);
@@ -38,7 +36,5 @@ Object.keys(db).forEach(modelName => {
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
-
-console.log("database db:" + db.User);
 
 module.exports = db;

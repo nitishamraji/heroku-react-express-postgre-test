@@ -1,0 +1,33 @@
+
+Model:
+
+npx sequelize-cli model:generate --name User --attributes userId:string,role:string,approved:boolean
+
+---------------------------------------
+
+Migration:
+npx sequelize-cli db:migrate
+
+---------------------------------------
+
+rollback:
+
+npx sequelize-cli db:migrate:undo
+
+npx sequelize-cli db:migrate:undo:all
+
+---------------------------------------
+
+Seed:
+
+npx sequelize-cli seed:generate --name User
+
+create:
+npx sequelize-cli db:seed:all
+
+udo:
+npx sequelize-cli db:seed:undo
+npx sequelize-cli db:seed:undo --seed name-of-seed-as-in-data
+npx sequelize-cli db:seed:undo:all
+
+---------------------------------------

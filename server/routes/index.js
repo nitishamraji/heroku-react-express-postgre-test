@@ -6,13 +6,6 @@ const { QueryTypes } = require('sequelize');
 const { Stocks, database } = require('../lib/database')
 const db = require('../sequelize/models')
 
-console.log('dirname: ' + __dirname)
-console.log("db: " + db);
-
-router.get('/hello', (req, res) => {
-  res.json(`${req.path} says hellooooo!`)
-})
-
 router.post('/stocks', cors(), async (req, res, next) => {
   // db
   //   .any('select * from hello')
@@ -103,6 +96,24 @@ router.post('/stocks', cors(), async (req, res, next) => {
   // console.log(categories);
 
   res.send("success");
-})
+});
+
+router.get('/getSupportedStocks', cors(), async (req, res, next) => {
+   console.log('testing getSupportedStocks')
+  try {
+    const supportedStocks = await db.SupportedStocks.findOne()
+
+    if( !supportedStocks )
+    {
+      console.log('no supportedStocks data');
+    } else {
+      console.log('data exists');
+      res.send(supportedStocks.data);
+    }
+  } catch(e)
+  {
+    console.log(e);
+  }
+});
 
 module.exports = router

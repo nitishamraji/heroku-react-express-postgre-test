@@ -1,5 +1,5 @@
 {
-  "name": "heroku-react-express-test-2",
+  "name": "my-finance-app-heroku",
   "version": "1.0.0",
   "description": "test",
   "main": "server/index.js",
